@@ -4,8 +4,8 @@ import kantan.csv._
 import kantan.csv.ops._
 import kantan.csv.generic._
 import java.io.File
-import java.io.File
 
+// Definición de la case class Movies1
 case class Movies1(
                     adult: Boolean,
                     belongs_to_collection: String,
@@ -37,7 +37,9 @@ case class Movies1(
                     ratings: String // JSON como cadena
                   )
 
-object ejemplo6_Movies extends App{
+// Agregar el HeaderDecoder implícito para que kantan.csv pueda decodificar correctamente a Movies1
+
+object ejemplo6_Movies extends App {
   val path2DataFile2 = "C:/Users/Maria Angel/Downloads/pi_movies_complete.csv"
 
   // Configurar lectura del CSV con delimitador ';'
@@ -48,7 +50,7 @@ object ejemplo6_Movies extends App{
   val rows_ok = dataSource2.collect {
     case Right(movie) => movie
   }
-  val rows_fall = dataSource2.collect{
+  val rows_fall = dataSource2.collect {
     case Left(error) => error
   }
 
@@ -57,12 +59,6 @@ object ejemplo6_Movies extends App{
 
   println(s"Numero de datos correctos: ${len_rows_ok}")
   println(s"Numero de datos incorrectos: ${len_rows_fail}")
-
-  /*val sum_runtime = rows_ok.map(_.runtime).sum
-  println(s"Suma de runtime: ${sum_runtime}")
-
-  val max_runtime = rows_ok.map(_.runtime).max
-  println(s"Max. de runtime: ${max_runtime}")*/
 }
 
 object parte2Analisis extends App {

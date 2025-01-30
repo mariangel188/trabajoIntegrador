@@ -1,3 +1,5 @@
+package models
+
 import kantan.csv._
 import kantan.csv.ops._
 import kantan.csv.generic._
